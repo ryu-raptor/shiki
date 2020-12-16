@@ -49,11 +49,11 @@ function main()
     end
 
     if args.output then
-        local f = file.open(args.output, 'w')
-        f:print(result)
+        local f = io.open(args.output, 'w')
+        f:write(result)
         f:close()
     else
-        print(result)
+        io.write(result)
     end
 end
 
