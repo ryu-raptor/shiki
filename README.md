@@ -3,6 +3,8 @@ title: 四季マニュアル
 author: ryu-raptor
 ---
 
+![四季\_shiki](./logo.svg)
+
 四季(shiki) inserts "aki"s in your plain text for typography.
 
 四季は和欧混文にアキを挿入して簡単なタイポグラフィを実現します．
