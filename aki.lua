@@ -1,5 +1,6 @@
 #!/usr/bin/env lua
 
+local argparse = require 'argparse'
 local ltable = require 'lua_table'
 local shiki = {
     insert = require 'shiki.inserter',
@@ -14,16 +15,24 @@ function to_codepoints(str)
     return arr
 end
 
+local parser = argparse()
+    :name 'aki'
+    :description 'Insert "Aki" for plain text typography.'
+    :epilog 'For more info, see https://github.com/ryu-raptor/shiki'
 
-function main(args)
+parser:argument('file', 'Source text files.')
+    :args '+'
+
+parser:option()
+    :name '-o --output'
+    :description 'An output file. If not given, results are written to stdout'
+
+function main()
+    local args = parser:parse()
     -- open files
-    if #args == 0 then
-        return
-    end
-
     local source = {}
 
-    for _, fpath in ipairs(args) do
+    for _, fpath in ipairs(args.file) do
         local f = io.open(fpath)
         ltable.append(source, to_codepoints(f:read('a')))
         f:close()
@@ -38,7 +47,14 @@ function main(args)
     for _, c in ipairs(shiki.insert.insert_aki(source, ips)) do
         result = result .. utf8.char(c)
     end
-    print(result)
+
+    if args.output then
+        local f = file.open(args.output, 'w')
+        f:print(result)
+        f:close()
+    else
+        print(result)
+    end
 end
 
-main(arg)
+main()
