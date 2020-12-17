@@ -5,11 +5,18 @@ author: ryu-raptor
 
 ! [四季\_shiki](./logo.svg)
 
-四季 (shiki) inserts "aki"s in your plain text for typography.
-
 四季は和欧混文にアキを挿入して簡単なタイポグラフィを実現します．
 
+四季 (shiki) inserts "aki"s in your plain text for typography.
+
 [`README.inserted.md`](README.inserted.md) はテキストを四季で処理したものです．
+
+```
+日本語と English が混じった passage は適度なスペース (spaces) を挿入しましょう．
+↓
+日本語と English が混じった passage は適度なスペース (spaces) を挿入しましょう．
+```
+:relaxed:
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -19,10 +26,10 @@ author: ryu-raptor
 - [インストール](#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 - [使い方](#%E4%BD%BF%E3%81%84%E6%96%B9)
 - [挿入ルール](#%E6%8C%BF%E5%85%A5%E3%83%AB%E3%83%BC%E3%83%AB)
-  - [between ルール](#between-%E3%83%AB%E3%83%BC%E3%83%AB)
-  - [before ルール / after ルール](#before-%E3%83%AB%E3%83%BC%E3%83%AB--after-%E3%83%AB%E3%83%BC%E3%83%AB)
-    - [before ルール](#before-%E3%83%AB%E3%83%BC%E3%83%AB)
-    - [after ルール](#after-%E3%83%AB%E3%83%BC%E3%83%AB)
+  - [between ルール](#between%E3%83%AB%E3%83%BC%E3%83%AB)
+  - [before ルール / after ルール](#before%E3%83%AB%E3%83%BC%E3%83%AB--after%E3%83%AB%E3%83%BC%E3%83%AB)
+    - [before ルール](#before%E3%83%AB%E3%83%BC%E3%83%AB)
+    - [after ルール](#after%E3%83%AB%E3%83%BC%E3%83%AB)
 - [しないこと](#%E3%81%97%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8)
   - [全角約物の前後にアキを入れる](#%E5%85%A8%E8%A7%92%E7%B4%84%E7%89%A9%E3%81%AE%E5%89%8D%E5%BE%8C%E3%81%AB%E3%82%A2%E3%82%AD%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B)
   - [文末，文頭にアキを入れる](#%E6%96%87%E6%9C%AB%E6%96%87%E9%A0%AD%E3%81%AB%E3%82%A2%E3%82%AD%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B)
@@ -32,14 +39,14 @@ author: ryu-raptor
   - [文脈を考えずにアキを入れる](#%E6%96%87%E8%84%88%E3%82%92%E8%80%83%E3%81%88%E3%81%9A%E3%81%AB%E3%82%A2%E3%82%AD%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B)
   - [アンドゥできない](#%E3%82%A2%E3%83%B3%E3%83%89%E3%82%A5%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%84)
 - [これからするようになること](#%E3%81%93%E3%82%8C%E3%81%8B%E3%82%89%E3%81%99%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B%E3%81%93%E3%81%A8)
-- [Jekyll で使う](#jekyll-%E3%81%A7%E4%BD%BF%E3%81%86)
+- [Jekyll で使う](#jekyll%E3%81%A7%E4%BD%BF%E3%81%86)
 - [ライセンス](#%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9)
 - [付録](#%E4%BB%98%E9%8C%B2)
   - [和文と欧文の具体的な範囲](#%E5%92%8C%E6%96%87%E3%81%A8%E6%AC%A7%E6%96%87%E3%81%AE%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E7%AF%84%E5%9B%B2)
   - [アキの入れ方](#%E3%82%A2%E3%82%AD%E3%81%AE%E5%85%A5%E3%82%8C%E6%96%B9)
     - [挿入点候補を列挙](#%E6%8C%BF%E5%85%A5%E7%82%B9%E5%80%99%E8%A3%9C%E3%82%92%E5%88%97%E6%8C%99)
     - [原文を複製しながら挿入点までカーソルを進める](#%E5%8E%9F%E6%96%87%E3%82%92%E8%A4%87%E8%A3%BD%E3%81%97%E3%81%AA%E3%81%8C%E3%82%89%E6%8C%BF%E5%85%A5%E7%82%B9%E3%81%BE%E3%81%A7%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E3%82%92%E9%80%B2%E3%82%81%E3%82%8B)
-    - [文字種を確認して適切な挿入を行う（shiki.insert.insert_aki 関数）](#%E6%96%87%E5%AD%97%E7%A8%AE%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97%E3%81%A6%E9%81%A9%E5%88%87%E3%81%AA%E6%8C%BF%E5%85%A5%E3%82%92%E8%A1%8C%E3%81%86shikiinsertinsert_aki-%E9%96%A2%E6%95%B0)
+    - [文字種を確認して適切な挿入を行う（shiki.insert.insert_aki 関数）](#%E6%96%87%E5%AD%97%E7%A8%AE%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97%E3%81%A6%E9%81%A9%E5%88%87%E3%81%AA%E6%8C%BF%E5%85%A5%E3%82%92%E8%A1%8C%E3%81%86shikiinsertinsert_aki%E9%96%A2%E6%95%B0)
   - [なんで四季？](#%E3%81%AA%E3%82%93%E3%81%A7%E5%9B%9B%E5%AD%A3)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->

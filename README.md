@@ -5,11 +5,18 @@ author: ryu-raptor
 
 ![四季\_shiki](./logo.svg)
 
-四季(shiki) inserts "aki"s in your plain text for typography.
-
 四季は和欧混文にアキを挿入して簡単なタイポグラフィを実現します．
 
+四季(shiki) inserts "aki"s in your plain text for typography.
+
 [`README.inserted.md`](README.inserted.md)はテキストを四季で処理したものです．
+
+```
+日本語とEnglishが混じったpassageは適度なスペース(spaces)を挿入しましょう．
+↓
+日本語と English が混じった passage は適度なスペース (spaces) を挿入しましょう．
+```
+:relaxed:
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
