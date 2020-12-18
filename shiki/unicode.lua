@@ -33,7 +33,7 @@ unicode.range.openBracket   = {0x28, 0x5b, 0x7b}
 -- 閉じカッコ類
 unicode.range.closeBracket  = {0x29, 0x5d, 0x7d}
 -- 句読点類
-unicode.range.punctuation   = {0x2c, 0x2e, 0x7d}
+unicode.range.punctuation   = {0x2c, 0x2e, 0x7d, 0x21, 0x3f, 0xa1, 0xbf}
 -- スラッシュ類(/|)
 unicode.range.separator     = {0x2f, 0x7c}
 -- 空白類 (SP, EOF, etc...)
@@ -68,6 +68,14 @@ function unicode.is(codepoint, range)
         result = result or b
     end
     return result
+end
+
+function unicode.to_codepoints(str)
+    local arr = {}
+    for _, v in utf8.codes(str) do
+        table.insert(arr, v)
+    end
+    return arr
 end
 
 return unicode

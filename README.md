@@ -84,6 +84,12 @@ aki your_input_plain_text_files ...
 aki your_input_plain_text_files ... | tee output_file
 ```
 
+バージョン`1.1-0`から`-o`/`--output`オプションでファイルに直接出力できます．
+```
+aki your_input_plain_text_files ... -o output_file
+aki your_input_plain_text_files ... --output output_file
+```
+
 現在エンコーディングはUTF-8のみサポートしています．
 
 # 挿入ルール
@@ -280,6 +286,28 @@ WIP
 MITライセンスで提供します．
 
 # 付録
+
+## 挿入ルールチートシート
+約物類について，現在の最新安定版（luarocksが出ている中で）で取り扱えるものをリストします．
+
+### カッコ類
+
+| beforeルール                                         | afterルール                                          |
+|------------------------------------------------------|------------------------------------------------------|
+| <span style="font-size: xx-large;">(</span> `U+0028` | <span style="font-size: xx-large;">)</span> `U+0029` |
+| <span style="font-size: xx-large;">[</span> `U+005b` | <span style="font-size: xx-large;">]</span> `U+005c` |
+| <span style="font-size: xx-large;">{</span> `U+007b` | <span style="font-size: xx-large;">}</span> `U+007d` |
+
+### 句読点類
+
+| afterルール                                          |
+|------------------------------------------------------|
+| <span style="font-size: xx-large;">,</span> `U+002c` |
+| <span style="font-size: xx-large;">.</span> `U+002e` |
+| <span style="font-size: xx-large;">!</span> `U+0021` |
+| <span style="font-size: xx-large;">?</span> `U+003f` |
+| <span style="font-size: xx-large;">¡</span> `U+00a1` |
+| <span style="font-size: xx-large;">¿</span> `U+00bf` |
 
 ## 和文と欧文の具体的な範囲
 Unicode standard 13.0をベースに次のような範囲となっています．これは`shiki/unicode.lua`と`shiki/char-category.lua`で確認できます．
