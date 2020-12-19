@@ -78,6 +78,9 @@ luarocks install shiki
 ```
 
 - バージョン1.2をインストールする場合
+```
+luarocks install shiki 1.2-0
+```
 
 # 使い方
 これだけです．
