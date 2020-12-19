@@ -2,6 +2,7 @@
 
 local unicode = require 'shiki.unicode'
 local ltable = require 'lua_table'
+local f = require 'functional'
 
 local p = {}
 
@@ -10,7 +11,41 @@ function p.match_object(matches_str, consumechar)
     return { match = matches_str, consume = consumechar }
 end
 
+-- 選択
+-- 最長マッチ
 function p.select(matches, id)
+    return function (ustr, pos)
+        local cands = {}
+
+        for _, m in ipairs(matches) do
+            local match, cid = m(ustr, pos)
+            if match then
+                -- 候補に入れつつ他のもやってみる
+                table.insert(cands, {
+                    match = match, cid = cid
+                })
+            end
+        end
+
+        if #cands == 0 then
+            return nil
+        end
+
+        -- 一番長かったのを選ぶ
+        -- ソートするまでもないですよね
+        -- 後でリファクタリング
+        table.sort(cands, function (a, b)
+            return a.match.consume > b.match.consume
+        end)
+
+        return cands[1].match, id or cands[1].cid
+    end
+end
+
+-- 最短マッチ
+-- ではないので注意
+-- 一番はじめのマッチを取得
+function p.negative_select(matches, id)
     return function (ustr, pos)
         for _, m in ipairs(matches) do
             local match, cid = m(ustr, pos)
@@ -23,6 +58,7 @@ function p.select(matches, id)
     end
 end
 
+-- 連接
 function p.combi(matches, id)
     return function (ustr, pos)
         local result = {}

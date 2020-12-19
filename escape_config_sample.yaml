@@ -1,0 +1,13 @@
+# Same as default config
+- begin: <pre>
+  end: </pre>
+- begin: <code>
+  end: </code>
+- begin: '```'
+  end: '```'
+- begin: '``'
+  end: '``'
+- begin: '`'
+  end: '`'
+- begin: '<!--'
+  end: '-->'
