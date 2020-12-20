@@ -18,6 +18,7 @@ dependencies = {
    "lua >= 5.1",
    "lua_table >= 0.4.3",
    "argparse >= 0.7.1",
+   "functional >= 0.11",
    "lua-yaml >= 1.2"
 }
 build = {
