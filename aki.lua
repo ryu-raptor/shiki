@@ -2,7 +2,7 @@
 
 local argparse = require 'argparse'
 local ltable = require 'lua_table'
-local lyaml = require 'lyaml'
+local yaml = require 'yaml'
 local shiki = {
     insert  = require 'shiki.inserter',
     pfinder = require 'shiki.pfinder',
@@ -60,7 +60,7 @@ function main()
     if args.escape or args.escape_config then
         if args.escape_config then
             local f = io.open(args.escape_config)
-            escape_pairs = lyaml.load(f:read('a'))
+            escape_pairs = yaml.eval(f:read('a'))
             -- load from file stub
         else
             -- escape default settings

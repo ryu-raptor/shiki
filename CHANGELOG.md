@@ -2,6 +2,16 @@
 title: Change Log
 ---
 
+# 1.3-1
+YAMLパーサを[lyaml](https://luarocks.org/modules/gvvaughan/lyaml)からCのコンパイルが要らない[lua-yaml](https://luarocks.org/modules/dominicletz/lua-yaml)に変更．
+
+完全なYAML仕様に準拠していないが，設定ファイルのフォーマットはパースできたため採用．
+
+設定のパースに問題がある場合は1.3-0にダウングレードして確認してください．
+
+カッコ類と同じく文頭に置くため，`¡¿`をbeforeルールに変更．
+ただし，私にスペイン語の正書法に明るくないため，変更されるかもしれません．
+
 # 1.3-0
 エスケープ機能を追加（`-e`/`--escape`）．
 指定したトークンで囲まれた領域で処理をスキップすることができます．

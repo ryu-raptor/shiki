@@ -11,7 +11,8 @@ local shiki = { category = require 'shiki.char-category' }
 --
 local rule = {
     before = unicode.mix_range(
-        unicode.range.openBracket
+        unicode.range.openBracket,
+        unicode.range.prePunctuation
     ),
     after = unicode.mix_range(
         unicode.range.closeBracket,

@@ -12,6 +12,7 @@ local yakumono = unicode.mix_range(
     unicode.range.openBracket,
     unicode.range.closeBracket,
     unicode.range.punctuation,
+    unicode.range.prePunctuation,
     unicode.range.separator,
     unicode.range.space,
     unicode.range.joint

@@ -29,18 +29,20 @@ unicode.range.kanji = {{0x4e00, 0x9fcf}}
 ---- 約物
 -- http://www.unicode.org/charts/PDF/U0000.pdf
 -- 開きカッコ類
-unicode.range.openBracket   = {0x28, 0x5b, 0x7b}
+unicode.range.openBracket    = {0x28, 0x5b, 0x7b}
 -- 閉じカッコ類
-unicode.range.closeBracket  = {0x29, 0x5d, 0x7d}
+unicode.range.closeBracket   = {0x29, 0x5d, 0x7d}
 -- 句読点類
-unicode.range.punctuation   = {0x2c, 0x2e, 0x7d, 0x21, 0x3f, 0xa1, 0xbf}
+unicode.range.punctuation    = {0x2c, 0x2e, 0x7d, 0x21, 0x3f}
+-- 前置句読点類
+unicode.range.prePunctuation = {0xa1, 0xbf}
 -- スラッシュ類(/|)
-unicode.range.separator     = {0x2f, 0x7c}
+unicode.range.separator      = {0x2f, 0x7c}
 -- 空白類 (SP, EOF, etc...)
-unicode.range.space         = {{0x00, 0x20}}
+unicode.range.space          = {{0x00, 0x20}}
 
 -- 接続約物（ハイフン，アンダースコア）
-unicode.range.joint         = {{0x23, 0x26}, 0x2d, 0x5f}
+unicode.range.joint          = {{0x23, 0x26}, 0x2d, 0x5f}
 
 ---- ユーティリティ関数
 -- 文字種を組み合わせる
