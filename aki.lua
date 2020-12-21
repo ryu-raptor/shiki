@@ -49,9 +49,16 @@ function main()
     local source = {}
 
     for _, fpath in ipairs(args.file) do
-        local f = io.open(fpath)
+        local f
+        if fpath == '-' then
+            f = io.input()
+        else
+            f = io.open(fpath)
+        end
+
         ltable.append(source, shiki.unicode.to_codepoints(f:read('a')))
-        f:close()
+
+        if f ~= io.input() then f:close() end
     end
 
     ---- options
