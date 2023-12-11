@@ -75,7 +75,7 @@ Luaのパッケージマネージャである[luarocks](https://luarocks.org/)�
 luarocksがインストールされていれば，Windows/Linux/Macのいずれでも動くと思います．
 
 バージョン1.3-0は[lyaml](https://github.com/gvvaughan/lyaml)というCのコンパイルが必要なライブラリを利用していますので，Windowsではコンパイラのインストールが必要です．
-バージョン1.3-1からCを利用いていない[lua-yaml](https://luarocks.org/modules/dominicletz/lua-yaml)に変更したため，コンパイラを導入できない場合はこちらをご利用ください．ただし，lua-yamlはYAML仕様に準拠していないため，サンプルの設定ファイルのようにインデントをしっかり入れてください．
+バージョン1.3-1からCを用いていない[lua-yaml](https://luarocks.org/modules/dominicletz/lua-yaml)に変更したため，コンパイラを導入できない場合はこちらをご利用ください．ただし，lua-yamlはYAML仕様に準拠していないため，サンプルの設定ファイルのようにインデントをしっかり入れてください．
 
 - 最新版をインストールする場合
 ```
